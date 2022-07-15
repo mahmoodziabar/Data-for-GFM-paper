@@ -1,4 +1,4 @@
-# Data-for-GFM-paper
+# Data-for-GMD-paper
 --- # Annotation for Dataset
 
 Title: 'Data for: Basin-scale gyres and mesoscale eddies in large lakes: A novel procedure for their detection and characterization, assessed in Lake Geneva'
