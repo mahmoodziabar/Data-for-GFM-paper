@@ -18,8 +18,7 @@ Files:
       - v [mm/s]
     depth interval: variable (1m - 60m)
 
-  - Folder name: Input 
-    Files: 
+  - Input Files: 
       - data
       - data.mnc
       - data.pkg
@@ -29,8 +28,7 @@ Files:
       - data.diagnostics
       - eedata
 
-  - Folder name: Codes
-    Files: 
+  - Code Files: 
       - CAL_OPTIONS
       - CPP_EEOPTIONS
       - CPP_OPTIONS
