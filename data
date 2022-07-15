@@ -1,0 +1,105 @@
+# Model parameters
+# Continuous equation parameters
+ &PARM01
+ tRef=5.4,
+ sRef=0.03,
+# Horizontal viscosity / diffusivity
+# see http://mitgcm.org/pipermail/mitgcm-support/2010-January/006439.html
+ diffKhT=1.0E-3,
+ viscC2Smag=0.3,
+ viscA4Grid=0.03,
+ usejamartwetpoints=.TRUE.,
+ vectorInvariantMomentum=.TRUE.,
+ highOrderVorticity=.TRUE.,
+ useEnergyConservingCoriolis=.TRUE.,
+###
+# Vertical viscosity / diffusivity
+ viscAz=1.0E-6,
+ diffKzT=1.0E-7,
+ implicitViscosity=.TRUE.,
+ implicitDiffusion=.TRUE.,
+# NHS => explicit
+# HS => implicit
+ nonHydrostatic=.FALSE.,
+###
+ f0=1.05e-4,
+ beta=0.E-11,
+ selectCoriMap=0,
+ gravity=9.81,
+# free surface
+ rigidLid=.FALSE.,
+ implicitFreeSurface=.TRUE.,
+ exactConserv=.TRUE.,
+ hFacMin=0.2,
+ hFacInf=0.2,
+ hFacSup=2.0,
+ nonlinFreeSurf=4,
+ select_rStar=2,
+ useRealFreshWaterFlux=.FALSE.,
+# for avoiding dumping of surface waves
+# unconditionally stable
+# http://mitgcm.org/sealion/online_documents/node40.html
+ implicSurfPress=0.5,
+ implicDiv2DFlow=0.5,
+# drag
+ allowFreezing=.FALSE.,
+ no_slip_sides=.TRUE.,
+ no_slip_bottom=.TRUE.,
+ bottomDragQuadratic=2.5E-3,
+#sideDragFactor=2,
+ eosType='MDJWF',
+ readBinaryPrec=64,
+# SOM, see Hill 2012
+ tempAdvScheme=81,
+# do not use salt for now
+ saltStepping=.FALSE.,
+ staggerTimeStep=.TRUE.,
+# IO configuration
+ useSingleCpuIO=.TRUE.,
+ globalFiles=.FALSE.,
+ &
+
+# Elliptic solver parameters
+ &PARM02
+ cg2dMaxIters=1000,
+ cg2dTargetResidual=1.E-9,
+ cg3dMaxIters=100,
+ cg3dTargetResidual=1.E-9,
+ useSRCGSolver=.TRUE.,
+ &
+
+# Time stepping parameters
+ &PARM03
+ nIter0=9990000,
+ nTimeSteps=593550,
+ deltaT=8.0,
+ abEps=0.1,
+ pChkptFreq=432000.0,
+ chkptFreq=0.0,
+ dumpFreq=0,
+ monitorSelect=1,
+ monitorFreq=1800.,
+ &
+
+# Gridding parameters
+ &PARM04
+ usingCartesianGrid=.TRUE.,
+ dXspacing=113.0,
+ dYspacing=113.0,
+ delZ= 0.30, 0.54, 0.78, 1.02, 1.26, 1.50, 1.74, 1.98, 2.22, 2.46,
+       2.70, 2.94, 3.18, 3.42, 3.66, 3.90, 4.14, 4.38, 4.62, 4.86,
+       5.10, 5.34, 5.58, 5.82, 6.06, 6.30, 6.54, 6.78, 7.02, 7.26,
+       7.50, 7.74, 7.98, 8.22, 8.46, 8.70, 8.94, 9.18, 9.42, 9.66,
+       9.90,10.14,10.38,10.62,10.86,11.10,11.34,11.58,11.82,12.06,
+ &
+
+# Input datasets
+ &PARM05
+ bathyFile='lemanbathy.bin',
+ hydrogThetaFile='',
+ hydrogSaltFile='',
+ uVelInitFile='',
+ vVelInitFile='',
+ zonalWindFile=,
+ meridWindFile=,
+ &

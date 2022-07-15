@@ -1,0 +1,58 @@
+# *********************
+# External Forcing Data
+# *********************
+ &EXF_NML_01
+ exf_iprec         = 64,
+ exf_debugLev      = 1,
+ useRelativeWind   = .TRUE.,
+ useAtmWind        = .TRUE.,
+ exf_albedo        = 0.06,
+ &
+
+# *********************
+ &EXF_NML_02
+
+ uwindfile         = 'uwind_202005070000_202006302300.bin',
+ uwindstartdate1   = 20200507,
+ uwindstartdate2   = 000000,
+ uwindperiod       = 3600.,
+#
+ vwindfile         = 'vwind_202005070000_202006302300.bin',
+ vwindstartdate1   = 20200507,
+ vwindstartdate2   = 000000,
+ vwindperiod       = 3600.,
+#
+ atempfile         = 'atmtemp_202005070000_202006302300.bin',
+ atempstartdate1   = 20200507,
+ atempstartdate2   = 000000,
+ atempperiod       = 3600.,
+#
+ swdownfile         = 'swdown_202005070000_202006302300.bin',
+ swdownstartdate1   = 20200507,
+ swdownstartdate2   = 000000,
+ swdownperiod       = 3600.,
+#
+ lwdownfile         = 'lwdown_202005070000_202006302300.bin',
+ lwdownstartdate1   = 20200507,
+ lwdownstartdate2   = 000000,
+ lwdownperiod       = 3600.,
+#
+ aqhfile         = 'humidity_202005070000_202006302300.bin',
+ aqhstartdate1   = 20200507,
+ aqhstartdate2   = 000000,
+ aqhperiod       = 3600.,
+#
+ precipfile         = '',
+ precipstartdate1   = 20200507,
+ precipstartdate2   = 000000,
+ precipperiod       = 3600.,
+#
+ &
+
+# *********************
+ &EXF_NML_03
+ &
+
+# *********************
+ &EXF_NML_04
+ &

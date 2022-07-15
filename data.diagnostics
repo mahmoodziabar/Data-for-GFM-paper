@@ -1,0 +1,84 @@
+# Diagnostic Package Choices
+#--------------------
+#  dumpAtLast (logical): always write output at the end of simulation (default=F)
+#  diag_mnc   (logical): write to NetCDF files (default=useMNC)
+#--for each output-stream:
+#  fileName(n) : prefix of the output file name (max 80c long) for outp.stream n
+#  frequency(n):< 0 : write snap-shot output every |frequency| seconds
+#               > 0 : write time-average output every frequency seconds
+#  timePhase(n)     : write at time = timePhase + multiple of |frequency|
+#    averagingFreq  : frequency (in s) for periodic averaging interval
+#    averagingPhase : phase     (in s) for periodic averaging interval
+#    repeatCycle    : number of averaging intervals in 1 cycle
+#  levels(:,n) : list of levels to write to file (Notes: declared as REAL)
+#                when this entry is missing, select all common levels of this list
+#  fields(:,n) : list of selected diagnostics fields (8.c) in outp.stream n
+#                (see "available_diagnostics.log" file for the full list of diags)
+#  missing_value(n) : missing value for real-type fields in output file "n"
+#  fileFlags(n)     : specific code (8c string) for output file "n"
+#--------------------
+ &DIAGNOSTICS_LIST
+  dumpAtLast   = .TRUE.,
+  diag_mnc     = .FALSE.,
+#--
+# external forcing
+  fields(1:9,1) = 'EXFlwnet','EXFswnet','EXFhl   ',
+                  'EXFhs   ','EXFtaux ','EXFtauy ',
+                  'EXFuwind','EXFvwind','EXFqnet ',
+  fileName(1) = '../output/EXF1/EXF',
+  frequency(1) = -1800.,
+
+# 3D snapshots
+  fields(1:4,2) = 'UVEL    ','VVEL    ','WVEL    ','THETA   ',
+# do not specify levels => all levels are selected
+  fileName(2) = '../output/3D1/3Dsnaps',
+  frequency(2) = -1800.,
+  timePhase(2) = 0.,
+
+# TFLUX
+  fields(1:5,3) = 'ETAN    ','PHI_SURF    ','RCENTER    ','RSURF    ','MXLDEPTH    ',
+	fileName(3) = '../output/2D1/TFLUX',
+	frequency(3) = -1800.,
+
+ &
+#--------------------
+# Parameter for Diagnostics of per level statistics:
+#--------------------
+#  diagSt_mnc (logical): write stat-diags to NetCDF files (default=diag_mnc)
+#  diagSt_regMaskFile : file containing the region-mask to read-in
+#  nSetRegMskFile   : number of region-mask sets within the region-mask file
+#  set_regMask(i)   : region-mask set-index that identifies the region "i"
+#  val_regMask(i)   : region "i" identifier value in the region mask
+#--for each output-stream:
+#  stat_fName(n) : prefix of the output file name (max 80c long) for outp.stream n
+#  stat_freq(n):< 0 : write snap-shot output every |stat_freq| seconds
+#               > 0 : write time-average output every stat_freq seconds
+#  stat_phase(n)    : write at time = stat_phase + multiple of |stat_freq|
+#  stat_region(:,n) : list of "regions" (default: 1 region only=global)
+#  stat_fields(:,n) : list of selected diagnostics fields (8.c) in outp.stream n
+#                (see "available_diagnostics.log" file for the full list of diags)
+#--------------------
+ &DIAG_STATIS_PARMS
+ diagSt_mnc = .FALSE.,
+#- mask defining profiles for Buchillon (1), SHL2 (2) and GE3 (3), ...
+# diagSt_regMaskFile='../input/stat_mask.bin',
+# I guess that in the file there can be more than one array with the mask
+# nSetRegMskFile = 1,
+# Probably this refers to the array number above, so if there is more
+# than one mask, it will refer to the mask number
+# set_regMask(1:10) = 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+# the actual value of the mask found in the mask file. Zeros probably are not valid,
+# since zero may they identify the "rest of the array" (not thoroughly tested).
+# val_regMask(1:10) = 2., 3., 4., 5., 6., 7., 8., 9., 10., 11.
+#---
+# stat_fName(1) = '../output/stat/stat_stations',
+# stat_fields(1:5,1) = 'UVEL    ','VVEL    ','WVEL    ','THETA   ','DRHODR  ',
+# stat_freq(1) = -1800.,
+# stat_phase(1) = 0.,
+# The netcdf output always contains (number of fields)=(number of mask values) +1
+# it seems that the first one is the "elsewhere" field, which can be activated
+# by choosing a zero. With 1,2,3,.. we select the stations in the regMask
+# I guess this saves some computing time.
+# stat_region(1:10,1)  = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+ &
+
