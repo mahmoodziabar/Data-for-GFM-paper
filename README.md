@@ -1,11 +1,11 @@
-# Data-for-GMD-paper
+
 --- # Annotation for Dataset
 
-Title: 'Data for: Basin-scale gyres and mesoscale eddies in large lakes: A novel procedure for their detection and characterization, assessed in Lake Geneva'
+Title: 'Data for: Chimney-like intense pelagic upwelling in the center of basin-scale cyclonic gyres in large Lake Geneva'
 
-Associated Publication: 'S. M. Hamze-Ziabari, U. Lemmin, M. Foroughan, and D. A. Barry (2022). "Basin-scale gyres and mesoscale eddies in large lakes: A novel procedure for their detection and characterization, assessed in Lake Geneva". Submitted to Geoscientific Model Development.'
+Associated Publication: 'S. M. Hamze-Ziabari, U. Lemmin, M. Foroughan, R. S. Reiss, and D. A. Barry (2022). "Chimney-like intense pelagic upwelling in the center of basin-scale cyclonic gyres in large Lake Geneva.'
 
-Description: ' The data include measurements from Acoustic Doppler Current Profilers (ADCP) along with the predefined transects described in the main text.
+Description: ' The data include measurements from Acoustic Doppler Current Profilers (ADCP) and the Conductivity Temperature Depth (CTD) instruments along with the predefined transects described in the main text.
 The three-dimensional model used in this study is based on the MIT General Circulation Model (MITgcm, http://mitgcm.org/, https://doi.org/10.1029/96JC02775). The model confguration and codes are included. 
 
 
@@ -16,6 +16,7 @@ Files:
     variables: 
       - u [mm/s]
       - v [mm/s]
+      - T [°C]
     depth interval: variable (1m - 60m)
 
   - Folder name: Input 
